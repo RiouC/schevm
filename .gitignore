@@ -1,0 +1,7 @@
+*~
+.vscode/
+
+
+*.hi
+*.o
+a.out
