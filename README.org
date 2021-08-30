@@ -36,3 +36,8 @@ https://github.com/ethereum/py-evm
 crytic/evm-opcodes: Ethereum opcodes and instruction reference
 https://github.com/crytic/evm-opcodes
 
+Introduction - Zinc v0.2.3
+https://zinc.zksync.io/index.html
+
+matter-labs/zinc: The Zinc language public repository
+https://github.com/matter-labs/zinc
