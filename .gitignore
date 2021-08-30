@@ -6,4 +6,6 @@
 *.o
 a.out
 
+__pycache__
+
 TODO.*
