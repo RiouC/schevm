@@ -1,0 +1,55 @@
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+#+options: \n:t ^:nil
+#+author:
+#+title: Lispy
+
+* Lexical analysis
+
+#+begin_src python
+  def tokenize(chars: str) -> list:
+    "Convert a string of characters into a list of tokens."
+    return chars.replace('(', ' ( ').replace(')', ' ) ').split()
+#+end_src
+
+#+begin_src python
+  >>> program = "(begin (define r 10) (* pi (* r r)))"
+  >>> tokenize(program)
+  ['(', 'begin', '(', 'define', 'r', '10', ')', '(', '*', 'pi', '(', '*', 'r', 'r', ')', ')', ')']
+#+end_src
+
+* Syntax analysis
+
+#+begin_src python
+  def parse(program: str) -> Exp:
+    "Read a Scheme expression from a string."
+    return read_from_tokens(tokenize(program))
+#+end_src
+
+#+begin_src python
+  def atom(token: str) -> Atom:
+    "Numbers become numbers; every other token is a symbol."
+    try: return int(token)
+    except ValueError:
+        try: return float(token)
+        except ValueError:
+            return Symbol(token)
+#+end_src
+
+#+begin_src python
+  def read_from_tokens(tokens: list) -> Exp:
+    "Read an expression from a sequence of tokens."
+    if len(tokens) == 0:
+        raise SyntaxError('unexpected EOF')
+      token = tokens.pop(0)
+    if token == '(':
+      L = []
+        while tokens[0] != ')':
+          L.append(read_from_tokens(tokens))
+          tokens.pop(0) # pop off ')'
+        return L
+    elif token == ')':
+        raise SyntaxError('unexpected )')
+    else:
+        return atom(token)
+#+end_src
