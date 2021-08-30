@@ -1,0 +1,4 @@
+Here is a picture of the interpretation process:
+
+program (scheme subset) ➡ parse ➡ abstract-syntax-tree ➡ OPCODE ➡ bytecode
+
