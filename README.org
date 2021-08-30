@@ -1,4 +1,38 @@
-* headline
+#+OPTIONS: ^:{} \n:t
+
+* eth tools
 
 - https://ethervm.io/
 - https://dapp.tools/hevm/
+
+* lisp resources
+
+** haskell
+
+- https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
+- https://github.com/zepto-lang/zepto
+- https://github.com/justinethier/husk-scheme
+- https://github.com/justinethier/cyclone
+- http://dev.stephendiehl.com/fun/
+
+** python
+
+- http://www.norvig.com/lispy.html
+- https://github.com/shvechikov/lisp.py
+- http://pythonpracticeprojects.com/lisp.html
+  
+* Doc
+
+[[file:doc/schevm.html::<?xml version="1.0" encoding="utf-8"?>]]
+
+* VM
+
+Ethereum Virtual Machine (EVM) | ethereum.org
+https://ethereum.org/en/developers/docs/evm/
+
+ethereum/py-evm: A Python implementation of the Ethereum Virtual Machine
+https://github.com/ethereum/py-evm
+
+crytic/evm-opcodes: Ethereum opcodes and instruction reference
+https://github.com/crytic/evm-opcodes
+
