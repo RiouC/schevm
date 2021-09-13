@@ -1,0 +1,116 @@
+#+author:
+#+options: toc:nil num:nil
+#+options: date:nil timestamp:nil
+#+title: Schevm
+#+REVEAL_THEME: black
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./css/slides.css" />
+# #+HTML_HEAD: <style type="text/css"> img {width: 100%} img[alt=bitcoin] {width: 50%}</style>
+
+# #+HTML_HEAD: <style type="text/css"> img {width: 50%} img[alt=bitcoin] {width: 20%}</style>
+
+#+HTML_HEAD: <style type="text/css"> img {width: 50%} img[alt=grex] {width: 50%}</style>
+
+* Sommaire
+
+**** Solidity: le js des smart-contracts
+**** Solidity n'est pas un langage uniforme et extensible
+**** Schevm
+**** Improvement of the language
+
+* Solidity: le js des smart-contracts
+
+** A.
+
+Le premier à être massivement utilisé
+
+** B.
+
+Pour que les devs javascript soient à l'aise dans la transition.
+Logique mercantile.
+
+** C. Conséquence
+
+Les nouvelles blockchain proposent parfois d'écrire leur smart-contracts
+avec leur langage et/ou en solidity
+
+* Solidity n'est pas un langage uniforme et extensible
+
+** A.
+
+Chaque blockchain new-gen apporte son lot d'innovations,
+et cela se reflète très souvent dans la syntaxe et les features
+de leur langage de smart-contract
+
+** B.
+
+Pourtant, avoir un langage qui permette de déployer
+sur différentes plateformes (blockchain) est inestimable.
+C'est pour ça que les projets multiplateformes explosent en popularité:
+- Webapps (toute machine dotée d'un webbrowser)
+- Dart/Flutter (Android/iOS/Web)
+- Rust vs C/C++
+- ...
+
+* Schevm
+
+** Présentation
+
+- Compilateur lisant un subset du langage Scheme
+- Produit en résultat du bytecode (et son ABI) tournant sur l'EVM
+- Compilateur écrit en python
+
+** Roadmap
+
+- 0. wys48 : scheme lexer/parser in haskell (poc)
+- 1. lispy : scheme interpreter in python
+- 2: lispy2 : full rewrite of lexer + improvements
+- 3: schevm : opcodes, bytecode, abi output
+- 4: support multi-vm
+
+* Improvement of the language
+
+** Scheme side
+
+- macros
+- TCO
+- variable number of arguments
+- error detection
+
+** EVM side
+
+- output opcodes
+- output bytecode
+- output ABI
+
+* Demo
+
+* Questions ?
+
+* Pourquoi Scheme-based ?
+
+** La grammaire
+
+- La grammaire du langage est très simple.
+- Parfait pour un POC.
+- Facile à apprendre.
+
+** Ressources
+
+Nombre important de cours/tutoriels
+
+** Metaprogrammation
+
+- Famille lisp
+- Macros : extension de la syntaxe
+
+* Pourquoi Python ?
+
+** Langage simple
+
+** Vyper
+
+Vyper est la preuve que tous les outils nécessaires
+pour produire du bytecode EVM sont disponibles avec python.

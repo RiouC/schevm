@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Schevm</title>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/dist/theme/black.css" id="theme"/>
+
+<link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
+<link rel="stylesheet" type="text/css" href="./css/slides.css" />
+<style type="text/css"> img {width: 50%} img[alt=grex] {width: 50%}</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Schevm</h1>
+</section>
+
+<section>
+<section id="slide-org446cd55">
+<h2 id="org446cd55">Sommaire</h2>
+<div class="outline-text-2" id="text-org446cd55">
+</div>
+<ul class="org-ul">
+<li><a id="orgbc852a1"></a>Solidity: le js des smart-contracts<br /></li>
+<li><a id="orgb777d5a"></a>Solidity n'est pas un langage uniforme et extensible<br /></li>
+<li><a id="org231687a"></a>Schevm<br /></li>
+<li><a id="org597a39e"></a>Improvement of the language<br /></li>
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1bba9c1">
+<h2 id="org1bba9c1">Solidity: le js des smart-contracts</h2>
+<div class="outline-text-2" id="text-org1bba9c1">
+</div>
+</section>
+<section id="slide-org054ed8b">
+<h3 id="org054ed8b">A.</h3>
+<p>
+Le premier à être massivement utilisé
+</p>
+
+</section>
+<section id="slide-org838bbaf">
+<h3 id="org838bbaf">B.</h3>
+<p>
+Pour que les devs javascript soient à l'aise dans la transition.
+Logique mercantile.
+</p>
+
+</section>
+<section id="slide-org4f4e993">
+<h3 id="org4f4e993">C. Conséquence</h3>
+<p>
+Les nouvelles blockchain proposent parfois d'écrire leur smart-contracts
+avec leur langage et/ou en solidity
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcc10cfd">
+<h2 id="orgcc10cfd">Solidity n'est pas un langage uniforme et extensible</h2>
+<div class="outline-text-2" id="text-orgcc10cfd">
+</div>
+</section>
+<section id="slide-org40bc426">
+<h3 id="org40bc426">A.</h3>
+<p>
+Chaque blockchain new-gen apporte son lot d'innovations,
+et cela se reflète très souvent dans la syntaxe et les features
+de leur langage de smart-contract
+</p>
+
+</section>
+<section id="slide-org67c1f00">
+<h3 id="org67c1f00">B.</h3>
+<p>
+Pourtant, avoir un langage qui permette de déployer
+sur différentes plateformes (blockchain) est inestimable.
+C'est pour ça que les projets multiplateformes explosent en popularité:
+</p>
+<ul>
+<li>Webapps (toute machine dotée d'un webbrowser)</li>
+<li>Dart/Flutter (Android/iOS/Web)</li>
+<li>Rust vs C/C++</li>
+<li>&#x2026;</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org5a68d2e">
+<h2 id="org5a68d2e">Schevm</h2>
+<div class="outline-text-2" id="text-org5a68d2e">
+</div>
+</section>
+<section id="slide-orga87578d">
+<h3 id="orga87578d">Présentation</h3>
+<ul>
+<li>Compilateur lisant un subset du langage Scheme</li>
+<li>Produit en résultat du bytecode (et son ABI) tournant sur l'EVM</li>
+<li>Compilateur écrit en python</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf502ee7">
+<h3 id="orgf502ee7">Roadmap</h3>
+<ul>
+<li>0. wys48 : scheme lexer/parser in haskell (poc)</li>
+<li>1. lispy : scheme interpreter in python</li>
+<li>2: lispy2 : full rewrite of lexer + improvements</li>
+<li>3: schevm : opcodes, bytecode, abi output</li>
+<li>4: support multi-vm</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org7a75c76">
+<h2 id="org7a75c76">Improvement of the language</h2>
+<div class="outline-text-2" id="text-org7a75c76">
+</div>
+</section>
+<section id="slide-orgf97e75a">
+<h3 id="orgf97e75a">Scheme side</h3>
+<ul>
+<li>macros</li>
+<li>TCO</li>
+<li>variable number of arguments</li>
+<li>error detection</li>
+
+</ul>
+
+</section>
+<section id="slide-org7b77972">
+<h3 id="org7b77972">EVM side</h3>
+<ul>
+<li>output opcodes</li>
+<li>output bytecode</li>
+<li>output ABI</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4751a66">
+<h2 id="org4751a66">Questions ?</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcafa82e">
+<h2 id="orgcafa82e">Pourquoi Scheme-based ?</h2>
+<div class="outline-text-2" id="text-orgcafa82e">
+</div>
+</section>
+<section id="slide-org7f6b08a">
+<h3 id="org7f6b08a">La grammaire</h3>
+<ul>
+<li>La grammaire du langage est très simple.</li>
+<li>Parfait pour un POC.</li>
+<li>Facile à apprendre.</li>
+
+</ul>
+
+</section>
+<section id="slide-orge418896">
+<h3 id="orge418896">Ressources</h3>
+<p>
+Nombre important de cours/tutoriels
+</p>
+
+</section>
+<section id="slide-org4cb4e33">
+<h3 id="org4cb4e33">Metaprogrammation</h3>
+<ul>
+<li>Famille lisp</li>
+<li>Macros : extension de la syntaxe</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org2c95826">
+<h2 id="org2c95826">Pourquoi Python ?</h2>
+<div class="outline-text-2" id="text-org2c95826">
+</div>
+</section>
+<section id="slide-orgaa39fa5">
+<h3 id="orgaa39fa5">Langage simple</h3>
+
+</section>
+<section id="slide-org3579a95">
+<h3 id="org3579a95">Vyper</h3>
+<p>
+Vyper est la preuve que tous les outils nécessaires
+pour produire du bytecode EVM sont disponibles avec python.
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/dist/reveal.js"></script>
+<script src="./reveal.js/plugin/markdown/markdown.js"></script>
+<script src="./reveal.js/plugin/zoom/zoom.js"></script>
+<script src="./reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown,RevealZoom,RevealNotes],
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+});
+
+
+</script>
+</body>
+</html>
