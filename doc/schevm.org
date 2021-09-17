@@ -4,6 +4,8 @@
 #+author:
 #+title: Schevm
 
+[[file:index.html::<?xml version="1.0" encoding="utf-8"?>][Index]]
+
 * Intro
 
 #+begin_src shell

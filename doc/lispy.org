@@ -4,6 +4,8 @@
 #+author:
 #+title: Lispy
 
+[[file:index.html::<?xml version="1.0" encoding="utf-8"?>][Index]]
+
 * Lexical analysis
 
 #+begin_src python
