@@ -128,8 +128,6 @@ class bcolors:
 if __name__ == '__main__':
     from lis import *
     test(lis_tests, 'lis.py')
-    # from lispy import *
-    from correction import *
-    # test(lis_tests+lispy_tests, 'lispy.py')
-    test(lis_tests+lispy_tests, 'correction.py')
+    from lispy import *
+    test(lis_tests+lispy_tests, 'lispy.py')
 

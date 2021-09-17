@@ -21,7 +21,7 @@ _quasiquote, _unquote, _unquotesplicing = map(Sym,
 def parse(inport):
     "Parse a program: read and expand/error-check it."
     # Backwards compatibility: given a str, convert it to an InPort
-    if isinstance(inport, str): inport = InPort(io.StringIO(inport))
+    if isa(inport, str): inport = InPort(io.StringIO(inport))
     return expand(read(inport), toplevel=True)
 
 eof_object = Symbol('#<eof-object>') # Note: uninterned; can't be read
@@ -129,11 +129,8 @@ class Env(dict):
         "Find the innermost Env where var appears."
         if var in self: return self
         elif self.outer is None: raise LookupError(var)
-        elif self.outer is None: print("self.outer is None")
         else: return self.outer.find(var)
 
-def is_pair(x): return x != [] and isa(x, list)
-def cons(x, y): return [x]+y
 
 def callcc(proc):
     "Call proc with current continuation; escape only"
@@ -168,6 +165,9 @@ def add_globals(self):
         'display':lambda x,port=sys.stdout:port.write(x if isa(x,str) else to_string(x))})
     return self
 
+def is_pair(x): return x != [] and isa(x, list)
+def cons(x, y): return [x]+y
+
 isa = isinstance
 
 global_env = add_globals(Env())
@@ -178,7 +178,6 @@ def eval(x, env=global_env):
     "Evaluate an expression in an environment."
     while True:
         if isa(x, Symbol):       # variable reference
-        # if isa(x, Symbol) and x not in symbol_table:
             return env.find(x)[x]
         elif not isa(x, list):   # constant literal
             return x                
@@ -279,6 +278,7 @@ def require(x, predicate, msg="wrong length"):
     if not predicate: raise SyntaxError(to_string(x)+': '+msg)
 
 _append, _cons, _let = map(Sym, "append cons let".split())
+
 
 def expand_quasiquote(x):
     """Expand `x => 'x; `,x => x; `(,@x y) => (append x y) """
