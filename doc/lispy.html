@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-17 Fri 07:37 -->
+<!-- 2021-09-17 Fri 07:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Index</title>
+<title>Lispy</title>
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -201,37 +201,80 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Index</h1>
+<h1 class="title">Lispy</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfe33398">1. Lispy</a></li>
-<li><a href="#orgdbb1430">2. Schevm</a></li>
+<li><a href="#orgac792bd">1. Lexical analysis</a></li>
+<li><a href="#org814fae6">2. Syntax analysis</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfe33398" class="outline-2">
-<h2 id="orgfe33398"><span class="section-number-2">1.</span> Lispy</h2>
+<div id="outline-container-orgac792bd" class="outline-2">
+<h2 id="orgac792bd"><span class="section-number-2">1.</span> Lexical analysis</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-<a href="lispy.html#MissingReference">Lispy</a><br />
-</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b18bb1; font-style: italic;">def</span> <span style="color: #F9B5AC;">tokenize</span><span style="color: #6e94b9;">(</span>chars: <span style="color: #DB6E8F;">str</span><span style="color: #6e94b9;">)</span> -&gt; <span style="color: #DB6E8F;">list</span>:
+  <span style="color: #A3B09A; font-style: italic;">"Convert a string of characters into a list of tokens."</span>
+  <span style="color: #b18bb1; font-style: italic;">return</span> chars.replace<span style="color: #6e94b9;">(</span><span style="color: #A3B09A;">'('</span>, <span style="color: #A3B09A;">' ( '</span><span style="color: #6e94b9;">)</span>.replace<span style="color: #6e94b9;">(</span><span style="color: #A3B09A;">')'</span>, <span style="color: #A3B09A;">' ) '</span><span style="color: #6e94b9;">)</span>.split<span style="color: #6e94b9;">()</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #c6797e;">program</span> = <span style="color: #A3B09A;">"(begin (define r 10) (* pi (* r r)))"</span>
+&gt;&gt;&gt; tokenize<span style="color: #6e94b9;">(</span>program<span style="color: #6e94b9;">)</span>
+<span style="color: #6e94b9;">[</span><span style="color: #A3B09A;">'('</span>, <span style="color: #A3B09A;">'begin'</span>, <span style="color: #A3B09A;">'('</span>, <span style="color: #A3B09A;">'define'</span>, <span style="color: #A3B09A;">'r'</span>, <span style="color: #A3B09A;">'10'</span>, <span style="color: #A3B09A;">')'</span>, <span style="color: #A3B09A;">'('</span>, <span style="color: #A3B09A;">'*'</span>, <span style="color: #A3B09A;">'pi'</span>, <span style="color: #A3B09A;">'('</span>, <span style="color: #A3B09A;">'*'</span>, <span style="color: #A3B09A;">'r'</span>, <span style="color: #A3B09A;">'r'</span>, <span style="color: #A3B09A;">')'</span>, <span style="color: #A3B09A;">')'</span>, <span style="color: #A3B09A;">')'</span><span style="color: #6e94b9;">]</span>
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgdbb1430" class="outline-2">
-<h2 id="orgdbb1430"><span class="section-number-2">2.</span> Schevm</h2>
+<div id="outline-container-org814fae6" class="outline-2">
+<h2 id="org814fae6"><span class="section-number-2">2.</span> Syntax analysis</h2>
 <div class="outline-text-2" id="text-2">
-<p>
-<a href="schevm.html#MissingReference">Schevm</a><br />
-</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b18bb1; font-style: italic;">def</span> <span style="color: #F9B5AC;">parse</span><span style="color: #6e94b9;">(</span>program: <span style="color: #DB6E8F;">str</span><span style="color: #6e94b9;">)</span> -&gt; Exp:
+  <span style="color: #A3B09A; font-style: italic;">"Read a Scheme expression from a string."</span>
+  <span style="color: #b18bb1; font-style: italic;">return</span> read_from_tokens<span style="color: #6e94b9;">(</span>tokenize<span style="color: #b18bb1;">(</span>program<span style="color: #b18bb1;">)</span><span style="color: #6e94b9;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b18bb1; font-style: italic;">def</span> <span style="color: #F9B5AC;">atom</span><span style="color: #6e94b9;">(</span>token: <span style="color: #DB6E8F;">str</span><span style="color: #6e94b9;">)</span> -&gt; Atom:
+  <span style="color: #A3B09A; font-style: italic;">"Numbers become numbers; every other token is a symbol."</span>
+  <span style="color: #b18bb1; font-style: italic;">try</span>: <span style="color: #b18bb1; font-style: italic;">return</span> <span style="color: #DB6E8F;">int</span><span style="color: #6e94b9;">(</span>token<span style="color: #6e94b9;">)</span>
+  <span style="color: #b18bb1; font-style: italic;">except</span> <span style="color: #c6797e;">ValueError</span>:
+      <span style="color: #b18bb1; font-style: italic;">try</span>: <span style="color: #b18bb1; font-style: italic;">return</span> <span style="color: #DB6E8F;">float</span><span style="color: #6e94b9;">(</span>token<span style="color: #6e94b9;">)</span>
+      <span style="color: #b18bb1; font-style: italic;">except</span> <span style="color: #c6797e;">ValueError</span>:
+          <span style="color: #b18bb1; font-style: italic;">return</span> Symbol<span style="color: #6e94b9;">(</span>token<span style="color: #6e94b9;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #b18bb1; font-style: italic;">def</span> <span style="color: #F9B5AC;">read_from_tokens</span><span style="color: #6e94b9;">(</span>tokens: <span style="color: #DB6E8F;">list</span><span style="color: #6e94b9;">)</span> -&gt; Exp:
+  <span style="color: #A3B09A; font-style: italic;">"Read an expression from a sequence of tokens."</span>
+  <span style="color: #b18bb1; font-style: italic;">if</span> <span style="color: #DB6E8F;">len</span><span style="color: #6e94b9;">(</span>tokens<span style="color: #6e94b9;">)</span> == 0:
+      <span style="color: #b18bb1; font-style: italic;">raise</span> <span style="color: #c6797e;">SyntaxError</span><span style="color: #6e94b9;">(</span><span style="color: #A3B09A;">'unexpected EOF'</span><span style="color: #6e94b9;">)</span>
+    token = tokens.pop<span style="color: #6e94b9;">(</span>0<span style="color: #6e94b9;">)</span>
+  <span style="color: #b18bb1; font-style: italic;">if</span> token == <span style="color: #A3B09A;">'('</span>:
+    L = <span style="color: #6e94b9;">[]</span>
+      <span style="color: #b18bb1; font-style: italic;">while</span> tokens<span style="color: #6e94b9;">[</span>0<span style="color: #6e94b9;">]</span> != <span style="color: #A3B09A;">')'</span>:
+        L.append<span style="color: #6e94b9;">(</span>read_from_tokens<span style="color: #b18bb1;">(</span>tokens<span style="color: #b18bb1;">)</span><span style="color: #6e94b9;">)</span>
+        tokens.pop<span style="color: #6e94b9;">(</span>0<span style="color: #6e94b9;">)</span> <span style="color: #64727d; font-style: italic;"># </span><span style="color: #64727d; font-style: italic;">pop off ')'</span>
+      <span style="color: #b18bb1; font-style: italic;">return</span> L
+  <span style="color: #b18bb1; font-style: italic;">elif</span> token == <span style="color: #A3B09A;">')'</span>:
+      <span style="color: #b18bb1; font-style: italic;">raise</span> <span style="color: #c6797e;">SyntaxError</span><span style="color: #6e94b9;">(</span><span style="color: #A3B09A;">'unexpected )'</span><span style="color: #6e94b9;">)</span>
+  <span style="color: #b18bb1; font-style: italic;">else</span>:
+      <span style="color: #b18bb1; font-style: italic;">return</span> atom<span style="color: #6e94b9;">(</span>token<span style="color: #6e94b9;">)</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-09-17 Fri 07:37</p>
+<p class="date">Created: 2021-09-17 Fri 07:36</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

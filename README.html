@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-08-30 Mon 18:50 -->
+<!-- 2021-09-09 Thu 12:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -200,36 +200,37 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9ef9d5b">1. eth tools</a></li>
-<li><a href="#org8cb9b20">2. lisp resources</a>
+<li><a href="#org05517ca">1. lisp resources</a>
 <ul>
-<li><a href="#org337e050">2.1. haskell</a></li>
-<li><a href="#org84fcd2e">2.2. python</a></li>
+<li><a href="#org519eb1a">1.1. haskell</a></li>
+<li><a href="#org3c6ae13">1.2. python</a></li>
 </ul>
 </li>
-<li><a href="#org6f24161">3. Doc</a></li>
-<li><a href="#orgb33a580">4. VM</a></li>
+<li><a href="#org12706fc">2. VM</a>
+<ul>
+<li><a href="#org1534da9">2.1. eth tools</a></li>
+<li><a href="#org8ef8e8b">2.2. pyevmasm</a></li>
+<li><a href="#org7b6f4ad">2.3. vyper</a></li>
+<li><a href="#orgcc6fee1">2.4. Resources</a>
+<ul>
+<li><a href="#org3a7f7d2">2.4.1. Testing</a></li>
+<li><a href="#orge8fcc2b">2.4.2. Zinc / Zksync</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org3f6d768">3. Doc</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9ef9d5b" class="outline-2">
-<h2 id="org9ef9d5b"><span class="section-number-2">1.</span> eth tools</h2>
+<div id="outline-container-org05517ca" class="outline-2">
+<h2 id="org05517ca"><span class="section-number-2">1.</span> lisp resources</h2>
 <div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li><a href="https://ethervm.io/">https://ethervm.io/</a><br /></li>
-<li><a href="https://dapp.tools/hevm/">https://dapp.tools/hevm/</a><br /></li>
-</ul>
 </div>
-</div>
-
-<div id="outline-container-org8cb9b20" class="outline-2">
-<h2 id="org8cb9b20"><span class="section-number-2">2.</span> lisp resources</h2>
-<div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-org337e050" class="outline-3">
-<h3 id="org337e050"><span class="section-number-3">2.1.</span> haskell</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-org519eb1a" class="outline-3">
+<h3 id="org519eb1a"><span class="section-number-3">1.1.</span> haskell</h3>
+<div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li><a href="https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours">https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours</a><br /></li>
 <li><a href="https://github.com/zepto-lang/zepto">https://github.com/zepto-lang/zepto</a><br /></li>
@@ -240,9 +241,9 @@
 </div>
 </div>
 
-<div id="outline-container-org84fcd2e" class="outline-3">
-<h3 id="org84fcd2e"><span class="section-number-3">2.2.</span> python</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-org3c6ae13" class="outline-3">
+<h3 id="org3c6ae13"><span class="section-number-3">1.2.</span> python</h3>
+<div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li><a href="http://www.norvig.com/lispy.html">http://www.norvig.com/lispy.html</a><br /></li>
 <li><a href="https://github.com/shvechikov/lisp.py">https://github.com/shvechikov/lisp.py</a><br /></li>
@@ -252,26 +253,71 @@
 </div>
 </div>
 
-<div id="outline-container-org6f24161" class="outline-2">
-<h2 id="org6f24161"><span class="section-number-2">3.</span> Doc</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org12706fc" class="outline-2">
+<h2 id="org12706fc"><span class="section-number-2">2.</span> VM</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org1534da9" class="outline-3">
+<h3 id="org1534da9"><span class="section-number-3">2.1.</span> eth tools</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li><a href="https://ethervm.io/">https://ethervm.io/</a><br /></li>
+<li><a href="https://dapp.tools/">https://dapp.tools/</a> (<a href="https://github.com/dapphub/dapptools">gh</a>) (<a href="https://dapphub.chat/home">chat</a>)<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8ef8e8b" class="outline-3">
+<h3 id="org8ef8e8b"><span class="section-number-3">2.2.</span> pyevmasm</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><a href="https://github.com/crytic/pyevmasm">GitHub - crytic/pyevmasm: EVM disassembler and assembler</a><br /></li>
+<li><a href="https://pyevmasm.readthedocs.io/en/latest/genindex.html">Index — pyevmasm documentation</a><br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7b6f4ad" class="outline-3">
+<h3 id="org7b6f4ad"><span class="section-number-3">2.3.</span> vyper</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
-<a href="doc/schevm.html#MissingReference">doc/schevm.html#MissingReference</a><br />
+vyper/opcodes.py at master · vyperlang/vyper<br />
+<a href="https://github.com/vyperlang/vyper/blob/master/vyper/evm/opcodes.py">https://github.com/vyperlang/vyper/blob/master/vyper/evm/opcodes.py</a><br />
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb33a580" class="outline-2">
-<h2 id="orgb33a580"><span class="section-number-2">4.</span> VM</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgcc6fee1" class="outline-3">
+<h3 id="orgcc6fee1"><span class="section-number-3">2.4.</span> Resources</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+ethereum-evm-illustrated - ethereum_evm_illustrated.pdf<br />
+<a href="https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf">https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf</a><br />
+</p>
+
 <p>
 Ethereum Virtual Machine (EVM) | ethereum.org<br />
 <a href="https://ethereum.org/en/developers/docs/evm/">https://ethereum.org/en/developers/docs/evm/</a><br />
 </p>
 
 <p>
-ethereum/py-evm: A Python implementation of the Ethereum Virtual Machine<br />
-<a href="https://github.com/ethereum/py-evm">https://github.com/ethereum/py-evm</a><br />
+<a href="https://github.com/ajlopez/evmasm">GitHub - ajlopez/evmasm: EVM (Ethereum Virtual Machine) assembler</a><br />
+(lire le dossier samples/compile pour voir des exemples de contracts compilés)<br />
+</p>
+
+<p>
+Ethereum Virtual Machine (EVM) | ethereum.org<br />
+<a href="https://ethereum.org/en/developers/docs/evm/">https://ethereum.org/en/developers/docs/evm/</a><br />
+</p>
+
+<p>
+Introduction to Smart Contracts — Solidity 0.8.8 documentation<br />
+<a href="https://docs.soliditylang.org/en/latest/introduction-to-smart-contracts.html#index-6">https://docs.soliditylang.org/en/latest/introduction-to-smart-contracts.html#index-6</a><br />
+</p>
+
+<p>
+beigepaper/beigepaper.pdf at master · chronaeon/beigepaper<br />
+<a href="https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf">https://github.com/chronaeon/beigepaper/blob/master/beigepaper.pdf</a><br />
 </p>
 
 <p>
@@ -279,6 +325,26 @@ crytic/evm-opcodes: Ethereum opcodes and instruction reference<br />
 <a href="https://github.com/crytic/evm-opcodes">https://github.com/crytic/evm-opcodes</a><br />
 </p>
 
+<p>
+ethereum/py-evm: A Python implementation of the Ethereum Virtual Machine<br />
+<a href="https://github.com/ethereum/py-evm">https://github.com/ethereum/py-evm</a><br />
+</p>
+</div>
+
+<div id="outline-container-org3a7f7d2" class="outline-4">
+<h4 id="org3a7f7d2"><span class="section-number-4">2.4.1.</span> Testing</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+crytic/echidna: Ethereum smart contract fuzzer<br />
+<a href="https://github.com/crytic/echidna">https://github.com/crytic/echidna</a><br />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orge8fcc2b" class="outline-4">
+<h4 id="orge8fcc2b"><span class="section-number-4">2.4.2.</span> Zinc / Zksync</h4>
+<div class="outline-text-4" id="text-2-4-2">
 <p>
 Introduction - Zinc v0.2.3<br />
 <a href="https://zinc.zksync.io/index.html">https://zinc.zksync.io/index.html</a><br />
@@ -291,9 +357,20 @@ matter-labs/zinc: The Zinc language public repository<br />
 </div>
 </div>
 </div>
+</div>
+
+<div id="outline-container-org3f6d768" class="outline-2">
+<h2 id="org3f6d768"><span class="section-number-2">3.</span> Doc</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="doc/schevm.html#MissingReference">doc/schevm.html#MissingReference</a><br />
+</p>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: Codex Atlanticus</p>
-<p class="date">Created: 2021-08-30 Mon 18:50</p>
+<p class="date">Created: 2021-09-09 Thu 12:26</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
