@@ -6,7 +6,7 @@
 
 [[file:index.html::<?xml version="1.0" encoding="utf-8"?>][Index]]
 
-* Intro
+* Overview
 
 #+begin_src shell
   InPort => read => expand => parse
@@ -25,8 +25,24 @@
 #+end_src
 
 
-* Lexical analysis
+* Macros
 
+#+begin_src scheme
+  (begin
+    (define square (lambda (x) (* x x)))
+    (define (cube x) (* x (* x x))))
+#+end_src
 
-* Syntax analysis
+#+begin_src python
+  >>> parse(InPort(open("5_define.ss")))
+['begin', ['define', 'square', ['lambda', ['x'], ['*', 'x', 'x']]], ['define', 'cube', ['lambda', ['x'], ['*', 'x', ['*', 'x', 'x']]]]]
+#+end_src
 
+#+begin_src scheme
+  eval(parse("""(begin
+    (define-macro and (lambda args 
+       (if (null? args) #t
+           (if (= (length args) 1) (car args)
+               `(if ,(car args) (and ,@(cdr args)) #f)))))
+  )"""))
+#+end_src

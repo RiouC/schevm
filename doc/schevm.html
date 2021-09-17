@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-09-17 Fri 10:06 -->
+<!-- 2021-09-17 Fri 11:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Schevm</title>
@@ -206,14 +206,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org493c0fc">1. Intro</a>
+<li><a href="#orge1e9eae">1. Overview</a>
 <ul>
-<li><a href="#org4be40fc">1.1. Lispy2</a></li>
-<li><a href="#orge543148">1.2. Schevm</a></li>
+<li><a href="#org3fd96ac">1.1. Lispy2</a></li>
+<li><a href="#orgbf5c079">1.2. Schevm</a></li>
 </ul>
 </li>
-<li><a href="#org72f7c0a">2. Lexical analysis</a></li>
-<li><a href="#org0fc32c9">3. Syntax analysis</a></li>
+<li><a href="#org8faecfd">2. Macros</a></li>
 </ul>
 </div>
 </div>
@@ -221,8 +220,8 @@
 <a href="index.html#MissingReference">Index</a><br />
 </p>
 
-<div id="outline-container-org493c0fc" class="outline-2">
-<h2 id="org493c0fc"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-orge1e9eae" class="outline-2">
+<h2 id="orge1e9eae"><span class="section-number-2">1.</span> Overview</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-shell">InPort =&gt; read =&gt; expand =&gt; parse
@@ -230,8 +229,8 @@
 </div>
 </div>
 
-<div id="outline-container-org4be40fc" class="outline-3">
-<h3 id="org4be40fc"><span class="section-number-3">1.1.</span> Lispy2</h3>
+<div id="outline-container-org3fd96ac" class="outline-3">
+<h3 id="org3fd96ac"><span class="section-number-3">1.1.</span> Lispy2</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #7d57c2;">eval</span> =&gt; repl =&gt; load
@@ -240,8 +239,8 @@
 </div>
 </div>
 
-<div id="outline-container-orge543148" class="outline-3">
-<h3 id="orge543148"><span class="section-number-3">1.2.</span> Schevm</h3>
+<div id="outline-container-orgbf5c079" class="outline-3">
+<h3 id="orgbf5c079"><span class="section-number-3">1.2.</span> Schevm</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-shell">ast_to_opcode =&gt; opcode_to_bytecode
@@ -252,17 +251,36 @@
 </div>
 
 
-<div id="outline-container-org72f7c0a" class="outline-2">
-<h2 id="org72f7c0a"><span class="section-number-2">2.</span> Lexical analysis</h2>
+<div id="outline-container-org8faecfd" class="outline-2">
+<h2 id="org8faecfd"><span class="section-number-2">2.</span> Macros</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-scheme"><span style="color: #00638a;">(</span><span style="color: #00638a; font-weight: bold;">begin</span>
+  <span style="color: #7d57c2;">(</span><span style="color: #00638a; font-weight: bold;">define</span> <span style="color: #454545;">square</span> <span style="color: #008080;">(</span><span style="color: #00638a; font-weight: bold;">lambda</span> <span style="color: #2e994c;">(</span>x<span style="color: #2e994c;">)</span> <span style="color: #2e994c;">(</span>* x x<span style="color: #2e994c;">)</span><span style="color: #008080;">)</span><span style="color: #7d57c2;">)</span>
+  <span style="color: #7d57c2;">(</span><span style="color: #00638a; font-weight: bold;">define</span> <span style="color: #008080;">(</span><span style="color: #454545;">cube</span> x<span style="color: #008080;">)</span> <span style="color: #008080;">(</span>* x <span style="color: #2e994c;">(</span>* x x<span style="color: #2e994c;">)</span><span style="color: #008080;">)</span><span style="color: #7d57c2;">)</span><span style="color: #00638a;">)</span>
+</pre>
 </div>
 
+<div class="org-src-container">
+<pre class="src src-python">  &gt;&gt;&gt; parse<span style="color: #00638a;">(</span>InPort<span style="color: #7d57c2;">(</span><span style="color: #7d57c2;">open</span><span style="color: #008080;">(</span><span style="color: #678f03;">"5_define.ss"</span><span style="color: #008080;">)</span><span style="color: #7d57c2;">)</span><span style="color: #00638a;">)</span>
+<span style="color: #00638a;">[</span><span style="color: #678f03;">'begin'</span>, <span style="color: #7d57c2;">[</span><span style="color: #678f03;">'define'</span>, <span style="color: #678f03;">'square'</span>, <span style="color: #008080;">[</span><span style="color: #678f03;">'lambda'</span>, <span style="color: #2e994c;">[</span><span style="color: #678f03;">'x'</span><span style="color: #2e994c;">]</span>, <span style="color: #2e994c;">[</span><span style="color: #678f03;">'*'</span>, <span style="color: #678f03;">'x'</span>, <span style="color: #678f03;">'x'</span><span style="color: #2e994c;">]</span><span style="color: #008080;">]</span><span style="color: #7d57c2;">]</span>, <span style="color: #7d57c2;">[</span><span style="color: #678f03;">'define'</span>, <span style="color: #678f03;">'cube'</span>, <span style="color: #008080;">[</span><span style="color: #678f03;">'lambda'</span>, <span style="color: #2e994c;">[</span><span style="color: #678f03;">'x'</span><span style="color: #2e994c;">]</span>, <span style="color: #2e994c;">[</span><span style="color: #678f03;">'*'</span>, <span style="color: #678f03;">'x'</span>, <span style="color: #00638a;">[</span><span style="color: #678f03;">'*'</span>, <span style="color: #678f03;">'x'</span>, <span style="color: #678f03;">'x'</span><span style="color: #00638a;">]</span><span style="color: #2e994c;">]</span><span style="color: #008080;">]</span><span style="color: #7d57c2;">]</span><span style="color: #00638a;">]</span>
+</pre>
+</div>
 
-<div id="outline-container-org0fc32c9" class="outline-2">
-<h2 id="org0fc32c9"><span class="section-number-2">3.</span> Syntax analysis</h2>
+<div class="org-src-container">
+<pre class="src src-scheme">eval<span style="color: #00638a;">(</span>parse<span style="color: #7d57c2;">(</span><span style="color: #678f03;">"""(begin</span>
+<span style="color: #678f03;">  (define-macro and (lambda args </span>
+<span style="color: #678f03;">     (if (null? args) #t</span>
+<span style="color: #678f03;">         (if (= (length args) 1) (car args)</span>
+<span style="color: #678f03;">             `(if ,(car args) (and ,@(cdr args)) #f)))))</span>
+<span style="color: #678f03;">)"""</span><span style="color: #7d57c2;">)</span><span style="color: #00638a;">)</span>
+</pre>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-09-17 Fri 10:06</p>
+<p class="date">Created: 2021-09-17 Fri 11:14</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
