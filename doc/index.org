@@ -11,3 +11,11 @@
 * Schevm
 
 [[file:schevm.org::+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup][Schevm]]
+
+* Tools
+
+install hevm
+
+#+begin_src shell
+stack install hevm --extra-include-dirs=(pwd)/secp256k1/include/ --extra-lib-dirs=(pwd)/secp256k1/.libs/
+#+end_src
